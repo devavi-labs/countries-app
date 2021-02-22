@@ -1,12 +1,13 @@
 import AppBar from "@material-ui/core/AppBar";
 import Container from "@material-ui/core/Container";
-import { Theme } from "@material-ui/core/styles/createMuiTheme";
 import { makeStyles } from "@material-ui/core/styles";
+import { Theme } from "@material-ui/core/styles/createMuiTheme";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { NextPage } from "next";
 import Head from "next/head";
 import React from "react";
+import { useGetAllCountries } from "../hooks/useGetAllCountries";
 
 const Home: NextPage = () => {
   const useStyles = makeStyles<Theme>(({ breakpoints: { width } }) => ({
@@ -20,6 +21,19 @@ const Home: NextPage = () => {
     },
   }));
   const classes = useStyles();
+
+  const [
+    { countries, fetching, error },
+    getAllCountries,
+  ] = useGetAllCountries();
+
+  React.useEffect(() => {
+    getAllCountries();
+  }, []);
+
+  React.useEffect(() => {
+    console.log(error, fetching, countries);
+  }, [error, fetching, countries]);
 
   return (
     <div>
