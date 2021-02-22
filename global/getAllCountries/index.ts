@@ -1,11 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { ThunkAction } from "redux-thunk";
-import { getAllCountries } from "../global/getAllCountries/actions";
-import {
-  GetAllCountriesActionType,
-  GetAllCountriesState,
-} from "../global/getAllCountries/types";
-import { RootState } from "../global/store";
+import { RootState } from "../store";
+import { getAllCountries } from "./actions";
+import { GetAllCountriesActionType, GetAllCountriesState } from "./types";
 
 export const useGetAllCountries = (): [
   GetAllCountriesState,

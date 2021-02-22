@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import { ThunkAction } from "redux-thunk";
-import { searchCountries } from "../global/searchCountries/actions";
 import {
   SearchCountriesActionType,
   SearchCountriesState,
   SearchQuery,
-} from "../global/searchCountries/types";
-import { RootState } from "../global/store";
+} from "./types";
+import { RootState } from "../store";
+import { searchCountries } from "./actions";
 
 export const useSearchCountries = (): [
   SearchCountriesState,
