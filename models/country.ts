@@ -1,4 +1,5 @@
 export interface ICountry {
+  alpha2Code: string;
   name: string;
   capital: string;
   region: string;
@@ -9,6 +10,7 @@ export interface ICountry {
 }
 
 export class Country implements ICountry {
+  alpha2Code: string;
   name: string;
   capital: string;
   region: string;
@@ -18,6 +20,7 @@ export class Country implements ICountry {
   flag: string;
 
   constructor({
+    alpha2Code,
     name,
     capital,
     region,
@@ -26,6 +29,7 @@ export class Country implements ICountry {
     area,
     flag,
   }: ICountry) {
+    this.alpha2Code = alpha2Code;
     this.name = name;
     this.capital = capital;
     this.region = region;
@@ -41,6 +45,7 @@ export class Country implements ICountry {
 
   toJSON(): ICountry {
     return {
+      alpha2Code: this.alpha2Code,
       name: this.name,
       capital: this.capital,
       region: this.region,

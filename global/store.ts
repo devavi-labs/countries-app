@@ -3,17 +3,21 @@ import { applyMiddleware, combineReducers, createStore, Store } from "redux";
 import thunkMiddleware from "redux-thunk";
 import { getAllCountriesReducer } from "./getAllCountries/reducers";
 import { GetAllCountriesState } from "./getAllCountries/types";
+import { getOneCountryReducer } from "./getOneCountry/reducers";
+import { GetOneCountryState } from "./getOneCountry/types";
 import { searchCountriesReducer } from "./searchCountries/reducer";
 import { SearchCountriesState } from "./searchCountries/types";
 
 export type RootState = {
   getAllCountries: GetAllCountriesState;
   searchCountries: SearchCountriesState;
+  getOneCountry: GetOneCountryState;
 };
 
 const rootReducer = combineReducers({
   getAllCountries: getAllCountriesReducer,
   searchCountries: searchCountriesReducer,
+  getOneCountry: getOneCountryReducer,
 });
 
 let store: Store<RootState> | undefined;
