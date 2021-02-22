@@ -19,12 +19,12 @@ export const searchCountriesReducer = (
     case SEARCH_COUNTRIES_REQUESTED:
       return {
         ...state,
-        by: action.by,
         query: action.query,
         fetching: true,
       };
     case SEARCH_COUNTRIES_FINISHED:
       return {
+        ...state,
         countries: action.payload,
         fetching: false,
         error: null,

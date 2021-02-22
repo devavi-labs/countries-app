@@ -4,7 +4,7 @@ export const SEARCH_COUNTRIES_REQUESTED = "SEARCH_COUNTRIES_REQUESTED";
 export const SEARCH_COUNTRIES_FINISHED = "SEARCH_COUNTRIES_FINISHED";
 export const SEARCH_COUNTRIES_FAILED = "SEARCH_COUNTRIES_FAILED";
 
-export type SearchCriteria = "name" | "capital" | "region" | "subregion";
+export type SearchCriteria = "name" | "capital" | "region";
 
 export type SearchQuery = {
   criteria: SearchCriteria;
