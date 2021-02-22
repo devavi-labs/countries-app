@@ -31,7 +31,7 @@ export const searchCountriesReducer = (
       };
     case SEARCH_COUNTRIES_FAILED:
       return {
-        ...state,
+        countries: [],
         fetching: false,
         error: action.payload,
       };
