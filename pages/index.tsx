@@ -8,6 +8,7 @@ import { NextPage } from "next";
 import Head from "next/head";
 import React from "react";
 import { useGetAllCountries } from "../hooks/useGetAllCountries";
+import { useSearchCountries } from "../hooks/useSearchCountries";
 
 const Home: NextPage = () => {
   const useStyles = makeStyles<Theme>(({ breakpoints: { width } }) => ({
@@ -24,11 +25,11 @@ const Home: NextPage = () => {
 
   const [
     { countries, fetching, error },
-    getAllCountries,
-  ] = useGetAllCountries();
+    searchCountries,
+  ] = useSearchCountries();
 
   React.useEffect(() => {
-    getAllCountries();
+    searchCountries({ criteria: "name", value: "india" });
   }, []);
 
   React.useEffect(() => {
