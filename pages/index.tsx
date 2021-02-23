@@ -1,32 +1,48 @@
 import AppBar from "@material-ui/core/AppBar";
 import Container from "@material-ui/core/Container";
-import { makeStyles } from "@material-ui/core/styles";
-import { Theme } from "@material-ui/core/styles/createMuiTheme";
+import Link from "@material-ui/core/Link";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
+import {
+  CellParams,
+  ColDef,
+  DataGrid,
+  SortModelParams,
+} from "@material-ui/data-grid";
 import { NextPage } from "next";
 import Head from "next/head";
 import React from "react";
-import { CellParams, ColDef, DataGrid } from "@material-ui/data-grid";
-import { useGetAllCountries } from "../global/getAllCountries";
 import Flag from "../components/Flag";
-import Link from "@material-ui/core/Link";
+import { useGetAllCountries } from "../global/getAllCountries";
+import useStyles from "../styles/home";
+import { useRouter } from "next/router";
+import { SortingQuery } from "../types/sortingQuery";
+import sortQueryToSortModel from "../utils/sortQueryToSortModel";
+import sortModelToSortQuery from "../utils/sortModelToSortQuery";
+import sortQueryToQueryString from "../utils/sortQueryToQueryString";
 
 const Home: NextPage = () => {
-  const useStyles = makeStyles<Theme>(({ breakpoints: { width } }) => ({
-    toolbar: {
-      width: "100%",
-      maxWidth: width("lg"),
-      margin: "0 auto",
-    },
-    title: {
-      fontWeight: "bold",
-    },
-    container: {
-      height: "calc(100vh - 80px)",
-    },
-  }));
   const classes = useStyles();
+
+  const router = useRouter();
+
+  const query = React.useMemo(() => (router.query as unknown) as SortingQuery, [
+    router.query,
+  ]);
+
+  const sortModel = React.useMemo(() => sortQueryToSortModel(query), [query]);
+
+  const handleSortModelChange = (params: SortModelParams) => {
+    if (params.sortModel !== sortModel) {
+      const query = sortModelToSortQuery(params.sortModel);
+      const queryString = sortQueryToQueryString(query);
+      if (queryString) {
+        router.push(`/${queryString}`);
+      } else {
+        router.push("/");
+      }
+    }
+  };
 
   const [
     { countries, fetching, error },
@@ -117,6 +133,8 @@ const Home: NextPage = () => {
             error={error}
             columns={columns}
             rows={rows}
+            sortModel={sortModel}
+            onSortModelChange={handleSortModelChange}
           />
         </Container>
       </main>
