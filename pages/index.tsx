@@ -16,6 +16,7 @@ import { RouteQuery } from "../types/RouteQuery";
 import SearchBar from "../components/SearchBar";
 import mergeSortingQuery from "../utils/mergeSortingQuery";
 import useStyles from "../styles/home";
+import Footer from "../components/Footer";
 
 const Home: NextPage = () => {
   const classes = useStyles();
@@ -86,6 +87,7 @@ const Home: NextPage = () => {
             hideFooterSelectedRowCount
           />
         </Container>
+        <Footer />
       </main>
     </div>
   );

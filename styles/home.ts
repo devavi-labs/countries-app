@@ -26,8 +26,11 @@ const useStyles = makeStyles<Theme>(
       },
     },
     container: {
-      height: `calc(100vh - ${spacing(16)})`,
+      height: `calc(100vh - ${spacing(14)})`,
       margin: spacing(1, "auto"),
+      [down("sm")]: {
+        height: `calc(100vh - ${spacing(18)})`,
+      },
     },
     background: {
       position: "absolute",
