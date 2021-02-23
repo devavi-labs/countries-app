@@ -15,6 +15,7 @@ import sortQueryToQueryString from "../utils/sortQueryToQueryString";
 import getColumns from "../utils/getColumns";
 import getRows from "../utils/getRows";
 import { RouteQuery } from "../types/RouteQuery";
+import SearchBar from "../components/SearchBar";
 
 const Home: NextPage = () => {
   const classes = useStyles();
@@ -67,6 +68,7 @@ const Home: NextPage = () => {
             <Typography variant="h5" component="span" className={classes.title}>
               Countries
             </Typography>
+            <SearchBar />
           </Toolbar>
         </AppBar>
         <Container maxWidth="lg" className={classes.container}>
