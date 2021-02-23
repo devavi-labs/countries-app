@@ -11,11 +11,11 @@ import useStyles from "../styles/home";
 import { useRouter } from "next/router";
 import sortQueryToSortModel from "../utils/sortQueryToSortModel";
 import sortModelToSortQuery from "../utils/sortModelToSortQuery";
-import sortQueryToQueryString from "../utils/sortQueryToQueryString";
 import getColumns from "../utils/getColumns";
 import getRows from "../utils/getRows";
 import { RouteQuery } from "../types/RouteQuery";
 import SearchBar from "../components/SearchBar";
+import mergeSortingQuery from "../utils/mergeSortingQuery";
 
 const Home: NextPage = () => {
   const classes = useStyles();
@@ -30,13 +30,13 @@ const Home: NextPage = () => {
 
   const handleSortModelChange = (params: SortModelParams) => {
     if (params.sortModel !== sortModel) {
-      const query = sortModelToSortQuery(params.sortModel);
-      const queryString = sortQueryToQueryString(query);
-      if (queryString) {
-        router.push(`/${queryString}`);
-      } else {
-        router.push("/");
-      }
+      const sortingQuery = sortModelToSortQuery(params.sortModel);
+
+      const queryString = mergeSortingQuery(sortingQuery, router.query);
+
+      const url = queryString ? `/?${queryString}` : "/";
+
+      router.push(url);
     }
   };
 

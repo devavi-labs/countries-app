@@ -1,19 +1,18 @@
-import React from "react";
-import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
-import Divider from "@material-ui/core/Divider";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
+import {
+  alpha,
+  createStyles,
+  makeStyles,
+  Theme,
+} from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
-import DirectionsIcon from "@material-ui/icons/Directions";
 import Autocomplete from "@material-ui/lab/Autocomplete";
-import { useGetAllCountries } from "../global/getAllCountries";
-import Flag from "./Flag";
-import { alpha } from "@material-ui/core/styles";
 import { useRouter } from "next/router";
+import React from "react";
+import { useGetAllCountries } from "../global/getAllCountries";
 import { Country } from "../models/country";
-import qs from "querystring";
+import mergeSearchQuery from "../utils/mergeSearchQuery";
+import Flag from "./Flag";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -92,19 +91,8 @@ const SearchBar: React.FC = () => {
     event.preventDefault();
 
     const { query } = router;
-    let queryString: string;
 
-    if (input) {
-      query.q = input;
-      query.qf = "name";
-
-      queryString = qs.stringify(query);
-    } else {
-      query.q = undefined;
-      query.qf = undefined;
-
-      queryString = qs.stringify(query).replace(/q=&qf=/gi, "");
-    }
+    const queryString = mergeSearchQuery(input, query);
 
     const url = queryString ? `/?${queryString}` : "/";
 

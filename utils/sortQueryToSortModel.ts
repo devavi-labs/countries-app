@@ -9,8 +9,10 @@ const sortQueryToSortModel = (query: SortingQuery) => {
 
   if (fields && sorts) {
     fields.forEach((field, i) => {
-      const sortItem = { field, sort: sorts[i] as SortDirection };
-      sortModel.push(sortItem);
+      if (field.length > 0 && sorts[i].length > 0) {
+        const sortItem = { field, sort: sorts[i] as SortDirection };
+        sortModel.push(sortItem);
+      }
     });
   }
 
