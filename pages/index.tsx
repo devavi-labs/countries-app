@@ -12,7 +12,6 @@ import {
 import { NextPage } from "next";
 import Head from "next/head";
 import React from "react";
-import Flag from "../components/Flag";
 import { useGetAllCountries } from "../global/getAllCountries";
 import useStyles from "../styles/home";
 import { useRouter } from "next/router";
@@ -20,7 +19,6 @@ import { SortingQuery } from "../types/sortingQuery";
 import sortQueryToSortModel from "../utils/sortQueryToSortModel";
 import sortModelToSortQuery from "../utils/sortModelToSortQuery";
 import sortQueryToQueryString from "../utils/sortQueryToQueryString";
-import getAlpha2Code from "../utils/getAlpha2Code";
 import getColumns from "../utils/getColumns";
 import getRows from "../utils/getRows";
 
@@ -56,7 +54,7 @@ const Home: NextPage = () => {
     getAllCountries();
   }, []);
 
-  const columns = React.useMemo(() => getColumns(countries), [countries]);
+  const columns = React.useMemo(() => getColumns(), []);
   const rows = React.useMemo(() => getRows(countries), [countries]);
 
   return (
