@@ -7,7 +7,6 @@ import { NextPage } from "next";
 import Head from "next/head";
 import React from "react";
 import { useGetAllCountries } from "../global/getAllCountries";
-import useStyles from "../styles/home";
 import { useRouter } from "next/router";
 import sortQueryToSortModel from "../utils/sortQueryToSortModel";
 import sortModelToSortQuery from "../utils/sortModelToSortQuery";
@@ -16,6 +15,7 @@ import getRows from "../utils/getRows";
 import { RouteQuery } from "../types/RouteQuery";
 import SearchBar from "../components/SearchBar";
 import mergeSortingQuery from "../utils/mergeSortingQuery";
+import useStyles from "../styles/home";
 
 const Home: NextPage = () => {
   const classes = useStyles();
@@ -71,6 +71,7 @@ const Home: NextPage = () => {
             <SearchBar />
           </Toolbar>
         </AppBar>
+        <div className={classes.background} />
         <Container maxWidth="lg" className={classes.container}>
           <DataGrid
             loading={fetching}
@@ -81,6 +82,8 @@ const Home: NextPage = () => {
             onSortModelChange={handleSortModelChange}
             disableColumnFilter
             pageSize={25}
+            className={classes.table}
+            hideFooterSelectedRowCount
           />
         </Container>
       </main>
