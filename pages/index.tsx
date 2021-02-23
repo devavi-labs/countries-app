@@ -21,6 +21,8 @@ import sortQueryToSortModel from "../utils/sortQueryToSortModel";
 import sortModelToSortQuery from "../utils/sortModelToSortQuery";
 import sortQueryToQueryString from "../utils/sortQueryToQueryString";
 import getAlpha2Code from "../utils/getAlpha2Code";
+import getColumns from "../utils/getColumns";
+import getRows from "../utils/getRows";
 
 const Home: NextPage = () => {
   const classes = useStyles();
@@ -54,62 +56,8 @@ const Home: NextPage = () => {
     getAllCountries();
   }, []);
 
-  const columns: Array<ColDef> = [
-    {
-      field: "flag",
-      headerName: "Flag",
-      renderCell: (params: CellParams) => <Flag url={params.value as string} />,
-      width: 80,
-    },
-    {
-      field: "name",
-      type: "string",
-      headerName: "Name",
-      width: 200,
-      renderCell: (params: CellParams) => (
-        <Link
-          href={`/country/${getAlpha2Code(params.value as string, countries)}`}
-        >
-          {params.value}
-        </Link>
-      ),
-    },
-    {
-      field: "capital",
-      type: "string",
-      headerName: "Capital",
-      width: 200,
-    },
-    {
-      field: "region",
-      type: "string",
-      headerName: "Region",
-      width: 200,
-    },
-    {
-      field: "subregion",
-      type: "string",
-      headerName: "Sub - Region",
-      width: 200,
-    },
-    {
-      field: "population",
-      type: "number",
-      headerName: "Population",
-      width: 140,
-    },
-    {
-      field: "area",
-      type: "number",
-      headerName: "Area",
-      width: 120,
-    },
-  ];
-
-  const rows = countries.map((country) => ({
-    ...country.toJSON(),
-    id: country.alpha2Code,
-  }));
+  const columns = React.useMemo(() => getColumns(countries), [countries]);
+  const rows = React.useMemo(() => getRows(countries), [countries]);
 
   return (
     <div>
