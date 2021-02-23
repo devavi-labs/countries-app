@@ -1,33 +1,27 @@
 import AppBar from "@material-ui/core/AppBar";
 import Container from "@material-ui/core/Container";
-import Link from "@material-ui/core/Link";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import {
-  CellParams,
-  ColDef,
-  DataGrid,
-  SortModelParams,
-} from "@material-ui/data-grid";
+import { DataGrid, SortModelParams } from "@material-ui/data-grid";
 import { NextPage } from "next";
 import Head from "next/head";
 import React from "react";
 import { useGetAllCountries } from "../global/getAllCountries";
 import useStyles from "../styles/home";
 import { useRouter } from "next/router";
-import { SortingQuery } from "../types/sortingQuery";
 import sortQueryToSortModel from "../utils/sortQueryToSortModel";
 import sortModelToSortQuery from "../utils/sortModelToSortQuery";
 import sortQueryToQueryString from "../utils/sortQueryToQueryString";
 import getColumns from "../utils/getColumns";
 import getRows from "../utils/getRows";
+import { RouteQuery } from "../types/RouteQuery";
 
 const Home: NextPage = () => {
   const classes = useStyles();
 
   const router = useRouter();
 
-  const query = React.useMemo(() => (router.query as unknown) as SortingQuery, [
+  const query = React.useMemo(() => (router.query as unknown) as RouteQuery, [
     router.query,
   ]);
 
@@ -55,7 +49,10 @@ const Home: NextPage = () => {
   }, []);
 
   const columns = React.useMemo(() => getColumns(), []);
-  const rows = React.useMemo(() => getRows(countries), [countries]);
+  const rows = React.useMemo(
+    () => getRows(countries, { q: query.q, qf: query.qf }),
+    [countries, query.q, query.qf]
+  );
 
   return (
     <div>
@@ -80,6 +77,7 @@ const Home: NextPage = () => {
             rows={rows}
             sortModel={sortModel}
             onSortModelChange={handleSortModelChange}
+            disableColumnFilter
             pageSize={25}
           />
         </Container>
