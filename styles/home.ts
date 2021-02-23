@@ -12,6 +12,7 @@ const useStyles = makeStyles<Theme>(({ breakpoints: { width, up } }) => ({
     display: "none",
     [up("sm")]: {
       display: "block",
+      fontWeight: "bold",
     },
   },
   container: {
