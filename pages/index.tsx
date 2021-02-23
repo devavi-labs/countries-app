@@ -80,6 +80,7 @@ const Home: NextPage = () => {
             rows={rows}
             sortModel={sortModel}
             onSortModelChange={handleSortModelChange}
+            pageSize={25}
           />
         </Container>
       </main>
