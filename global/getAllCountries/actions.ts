@@ -1,6 +1,6 @@
 import axios from "axios";
 import { ThunkAction } from "redux-thunk";
-import { Country, ICountry } from "../../models/country";
+import { Country, CountryJSON, ICountry } from "../../models/country";
 import { RootState } from "../store";
 import {
   GET_ALL_COUNTRIES_REQUESTED,
@@ -19,7 +19,7 @@ export const getAllCountries = (): ThunkAction<
     dispatch({ type: GET_ALL_COUNTRIES_REQUESTED });
 
     try {
-      const res = await axios.get<Array<ICountry>>(
+      const res = await axios.get<Array<CountryJSON>>(
         "https://restcountries.eu/rest/v2/all"
       );
 
