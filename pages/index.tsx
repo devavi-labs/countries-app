@@ -20,6 +20,7 @@ import { SortingQuery } from "../types/sortingQuery";
 import sortQueryToSortModel from "../utils/sortQueryToSortModel";
 import sortModelToSortQuery from "../utils/sortModelToSortQuery";
 import sortQueryToQueryString from "../utils/sortQueryToQueryString";
+import getAlpha2Code from "../utils/getAlpha2Code";
 
 const Home: NextPage = () => {
   const classes = useStyles();
@@ -53,10 +54,6 @@ const Home: NextPage = () => {
     getAllCountries();
   }, []);
 
-  const getAlphaCode = (fullName: string) => {
-    return countries.find((country) => country.name === fullName)?.alpha2Code;
-  };
-
   const columns: Array<ColDef> = [
     {
       field: "flag",
@@ -70,7 +67,9 @@ const Home: NextPage = () => {
       headerName: "Name",
       width: 200,
       renderCell: (params: CellParams) => (
-        <Link href={`/country/${getAlphaCode(params.value as string)}`}>
+        <Link
+          href={`/country/${getAlpha2Code(params.value as string, countries)}`}
+        >
           {params.value}
         </Link>
       ),
