@@ -1,16 +1,16 @@
-import { makeStyles } from "@material-ui/core/styles";
+import { alpha, makeStyles } from "@material-ui/core/styles";
 
 interface FlagProps {
   url: string;
 }
 
 const Flag: React.FC<FlagProps> = ({ url }) => {
-  const useStyles = makeStyles(() => ({
+  const useStyles = makeStyles(({ palette: { common } }) => ({
     flag: {
-      backgroundImage: `url(${url})`,
-      width: 40,
-      height: 30,
+      width: 33,
+      height: 22.5,
       objectFit: "cover",
+      boxShadow: `0 0 8px 2px ${alpha(common.black, 0.3)}`,
     },
   }));
   const classes = useStyles();
