@@ -44,7 +44,7 @@ const CountriesTable = () => {
 
       const url = queryString ? `/?${queryString}` : "/";
 
-      router.push(url);
+      router.push(url, undefined, { shallow: true });
     }
   };
 

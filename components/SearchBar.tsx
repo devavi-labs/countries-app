@@ -43,7 +43,7 @@ const SearchBar: React.FC = () => {
 
     const url = queryString ? `/?${queryString}` : "/";
 
-    router.push(url);
+    router.push(url, undefined, { shallow: true });
   };
 
   return (
