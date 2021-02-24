@@ -5,18 +5,23 @@ import Typography from "@material-ui/core/Typography";
 import { DataGrid, SortModelParams } from "@material-ui/data-grid";
 import { NextPage } from "next";
 import Head from "next/head";
-import React from "react";
-import { useGetAllCountries } from "../global/getAllCountries";
 import { useRouter } from "next/router";
-import sortQueryToSortModel from "../utils/sortQueryToSortModel";
-import sortModelToSortQuery from "../utils/sortModelToSortQuery";
+import React from "react";
+import { useSelector } from "react-redux";
+import Footer from "../components/Footer";
+import SearchBar from "../components/SearchBar";
+import { countriesError, countriesLoaded } from "../global/countries/actions";
+import { CountriesState } from "../global/countries/types";
+import { wrapper } from "../global/store";
+import { RootState } from "../global/types";
+import useStyles from "../styles/home";
+import { RouteQuery } from "../types/RouteQuery";
+import fetchCountries from "../utils/fetchCountries";
 import getColumns from "../utils/getColumns";
 import getRows from "../utils/getRows";
-import { RouteQuery } from "../types/RouteQuery";
-import SearchBar from "../components/SearchBar";
 import mergeSortingQuery from "../utils/mergeSortingQuery";
-import useStyles from "../styles/home";
-import Footer from "../components/Footer";
+import sortModelToSortQuery from "../utils/sortModelToSortQuery";
+import sortQueryToSortModel from "../utils/sortQueryToSortModel";
 
 const Home: NextPage = () => {
   const classes = useStyles();
@@ -41,14 +46,9 @@ const Home: NextPage = () => {
     }
   };
 
-  const [
-    { countries, fetching, error },
-    getAllCountries,
-  ] = useGetAllCountries();
-
-  React.useEffect(() => {
-    getAllCountries();
-  }, []);
+  const { countries, error } = useSelector<RootState, CountriesState>(
+    (state) => state.countries
+  );
 
   const columns = React.useMemo(() => getColumns(), []);
   const rows = React.useMemo(
@@ -75,7 +75,6 @@ const Home: NextPage = () => {
         <div className={classes.background} />
         <Container maxWidth="lg" className={classes.container}>
           <DataGrid
-            loading={fetching}
             error={error}
             columns={columns}
             rows={rows}
@@ -92,5 +91,16 @@ const Home: NextPage = () => {
     </div>
   );
 };
+
+export const getServerSideProps = wrapper.getServerSideProps(
+  async ({ store }) => {
+    try {
+      const countries = await fetchCountries();
+      store.dispatch(countriesLoaded(countries));
+    } catch (err) {
+      store.dispatch(countriesError(err.message));
+    }
+  }
+);
 
 export default Home;

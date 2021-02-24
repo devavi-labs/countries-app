@@ -3,7 +3,9 @@ import SearchIcon from "@material-ui/icons/Search";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { useRouter } from "next/router";
 import React from "react";
-import { useGetAllCountries } from "../global/getAllCountries";
+import { useSelector } from "react-redux";
+import { CountriesState } from "../global/countries/types";
+import { RootState } from "../global/types";
 import { Country } from "../models/country";
 import { useStyles } from "../styles/searchBar";
 import mergeSearchQuery from "../utils/mergeSearchQuery";
@@ -14,7 +16,9 @@ const SearchBar: React.FC = () => {
 
   const router = useRouter();
 
-  const [{ countries }] = useGetAllCountries();
+  const { countries } = useSelector<RootState, CountriesState>(
+    (state) => state.countries
+  );
 
   const [input, setInput] = React.useState("");
 
