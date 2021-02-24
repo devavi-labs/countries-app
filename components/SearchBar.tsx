@@ -86,6 +86,7 @@ const SearchBar: React.FC = () => {
           );
         }}
         onChange={handleAutoComplete}
+        noOptionsText="No countries"
       />
     </form>
   );
