@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import { useSelector } from "react-redux";
 import Footer from "../components/Footer";
+import Header from "../components/Header";
 import SearchBar from "../components/SearchBar";
 import { countriesError, countriesLoaded } from "../global/countries/actions";
 import { CountriesState } from "../global/countries/types";
@@ -64,14 +65,9 @@ const Home: NextPage = () => {
       </Head>
 
       <main>
-        <AppBar position="sticky" elevation={0}>
-          <Toolbar className={classes.toolbar}>
-            <Typography variant="h5" component="span" className={classes.title}>
-              Countries
-            </Typography>
-            <SearchBar />
-          </Toolbar>
-        </AppBar>
+        <Header title="Countries">
+          <SearchBar />
+        </Header>
         <div className={classes.background} />
         <Container maxWidth="lg" className={classes.container}>
           <DataGrid
