@@ -41,8 +41,8 @@ You can search for any country by typing in the name in the search bar or by sel
 The web page is fully responsive for desktop, tablet, and mobile.
 
 <p align="center">
-    <img src="_screenshots/main_mobile.png" style="max-height: 400px;">
-    <img src="_screenshots/sorting_mobile.png" style="max-height: 400px;">
-    <img src="_screenshots/search_preview_mobile.png" style="max-height: 400px;">
-    <img src="_screenshots/search_mobile.png" style="max-height: 400px;">
+    <img src="_screenshots/main_mobile.png" height='400px'>
+    <img src="_screenshots/sorting_mobile.png" height='400px'>
+    <img src="_screenshots/search_preview_mobile.png" height='400px'>
+    <img src="_screenshots/search_mobile.png" height='400px'>
 </p>
