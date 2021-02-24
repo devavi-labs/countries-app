@@ -4,7 +4,7 @@ import { ArrowForward, ArrowRight } from "@material-ui/icons";
 import SearchIcon from "@material-ui/icons/Search";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { useRouter } from "next/router";
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import { CountriesState } from "../global/countries/types";
 import { RootState } from "../global/types";
@@ -18,6 +18,13 @@ const SearchBar: React.FC = () => {
   const classes = useStyles();
 
   const router = useRouter();
+
+  const [open, setOpen] = useState(false);
+
+  /**
+   * Handles when autocomplete popper is requested to be opened
+   */
+  const handlePopperOpen = () => setOpen(true);
 
   /**
    * Combined route queries containing both sorting queries and search query
@@ -60,6 +67,8 @@ const SearchBar: React.FC = () => {
   };
 
   /**
+   * First closes the autocomplete popper if its open
+   *
    * Merges the input from user to the existing route queries
    * and changes the route with appropriate search query
    *
@@ -67,6 +76,7 @@ const SearchBar: React.FC = () => {
    */
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    open && setOpen(false);
 
     const queryString = mergeSearchQuery(input, query);
 
@@ -115,6 +125,8 @@ const SearchBar: React.FC = () => {
         }}
         onChange={handleAutoComplete}
         noOptionsText="No countries"
+        onOpen={handlePopperOpen}
+        open={open}
       />
       <IconButton
         className={
