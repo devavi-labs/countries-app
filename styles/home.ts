@@ -20,9 +20,6 @@ const useStyles = makeStyles<Theme>(
       borderBottomLeftRadius: "20%",
       borderBottomRightRadius: "20%",
     },
-    table: {
-      backgroundColor: common.white,
-    },
   })
 );
 
