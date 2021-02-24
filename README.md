@@ -9,7 +9,7 @@ A Next.js Web Application built with the [REST Countries](https://restcountries.
 You can view all the countries in a user-friendly table view.
 
 <p align="center">
-    <img src="_screenshots/main.png" style="max-height: 400px;">
+    <img src="_screenshots/main.png">
 </p>
 
 ### Sorting
@@ -17,11 +17,11 @@ You can view all the countries in a user-friendly table view.
 You can apply sorting, ascending or descending, to any column by clicking on the column's header.
 
 <p align="center">
-    <img src="_screenshots/sorting_preview.png" style="max-height: 400px;">
+    <img src="_screenshots/sorting_preview.png">
 </p>
 
 <p align="center">
-    <img src="_screenshots/sorting.png" style="max-height: 400px;">
+    <img src="_screenshots/sorting.png">
 </p>
 
 ### Search
@@ -29,11 +29,11 @@ You can apply sorting, ascending or descending, to any column by clicking on the
 You can search for any country by typing in the name in the search bar or by selecting one from the auto complete dropdown.
 
 <p align="center">
-    <img src="_screenshots/search_preview.png" style="max-height: 400px;">
+    <img src="_screenshots/search_preview.png">
 </p>
 
 <p align="center">
-    <img src="_screenshots/search.png" style="max-height: 400px;">
+    <img src="_screenshots/search.png">
 </p>
 
 ### Responsive
