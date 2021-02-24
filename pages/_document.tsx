@@ -11,6 +11,19 @@ export default class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
+          <meta title="og:title" content="Countries App by Dev. Avi" />
+          <meta
+            title="og:description"
+            content="A Next.js Web Application built with the REST Countries's REST API"
+          />
+          <meta title="og:image" content="/assets/main.png" />
+          <meta title="twitter:card" content="summary_large_image" />
+          <meta title="twitter:title" content="Countries App by Dev. Avi" />
+          <meta
+            title="twitter:description"
+            content="A Next.js Web Application built with the REST Countries's REST API"
+          />
+          <meta title="twitter:image" content="/assets/main.png" />
         </Head>
         <body>
           <Main />
