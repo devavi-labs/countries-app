@@ -12,7 +12,7 @@ const Header: React.FC<HeaderProps> = ({ title, children }) => {
   const classes = useStyles();
 
   return (
-    <AppBar color="transparent" position="sticky" elevation={0}>
+    <AppBar position="sticky" elevation={0}>
       <Toolbar className={classes.toolbar}>
         <Typography variant="h5" component="span" className={classes.title}>
           {title}
