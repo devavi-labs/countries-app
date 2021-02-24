@@ -22,9 +22,12 @@ const SearchBar: React.FC = () => {
   const [open, setOpen] = useState(false);
 
   /**
-   * Handles when autocomplete popper is requested to be opened
+   * Handles when autocomplete popper is requested
+   * to be opened or closed
+   *
+   * @param value {boolean} The boolean value to be set
    */
-  const handlePopperOpen = () => setOpen(true);
+  const handlePopperOpen = (value: boolean) => setOpen(value);
 
   /**
    * Combined route queries containing both sorting queries and search query
@@ -125,8 +128,9 @@ const SearchBar: React.FC = () => {
         }}
         onChange={handleAutoComplete}
         noOptionsText="No countries"
-        onOpen={handlePopperOpen}
+        onOpen={() => handlePopperOpen(true)}
         open={open}
+        onClose={() => handlePopperOpen(false)}
       />
       <IconButton
         className={
