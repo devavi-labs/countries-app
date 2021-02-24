@@ -8,14 +8,13 @@ const getColumns = (): Array<ColDef> => [
     headerName: "Flag",
     renderCell: (params: CellParams) => <Flag url={params.value as string} />,
     width: 80,
-    filterable: false,
+    sortable: false,
   },
   {
     field: "name",
     type: "string",
     headerName: "Name",
     width: 200,
-    flex: 1,
   },
   {
     field: "capital",
@@ -40,14 +39,12 @@ const getColumns = (): Array<ColDef> => [
     type: "number",
     headerName: "Population",
     width: 140,
-    filterable: false,
   },
   {
     field: "area",
     type: "number",
     headerName: "Area",
     width: 120,
-    filterable: false,
   },
 ];
 
