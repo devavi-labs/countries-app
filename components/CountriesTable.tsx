@@ -1,6 +1,10 @@
-import { DataGrid, SortModelParams } from "@material-ui/data-grid";
+import {
+  DataGrid,
+  PageChangeParams,
+  SortModelParams,
+} from "@material-ui/data-grid";
 import { useRouter } from "next/router";
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import useCountriesTable from "../hooks/useCountriesTable";
 import useStyles from "../styles/countriesTable";
 import { RouteQuery } from "../types/RouteQuery";
@@ -19,6 +23,18 @@ const CountriesTable = () => {
   const { columns, rows, error } = useCountriesTable(query);
 
   const sortModel = useMemo(() => sortQueryToSortModel(query), [query]);
+
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const handlePageChange = (params: PageChangeParams) => {
+    if (params.page !== currentPage) setCurrentPage(params.page);
+  };
+
+  useEffect(() => {
+    if (currentPage !== 0) {
+      setCurrentPage(0);
+    }
+  }, [rows]);
 
   const handleSortModelChange = (params: SortModelParams) => {
     if (params.sortModel !== sortModel) {
@@ -43,6 +59,8 @@ const CountriesTable = () => {
       pageSize={25}
       className={classes.table}
       hideFooterSelectedRowCount
+      page={currentPage}
+      onPageChange={handlePageChange}
     />
   );
 };
