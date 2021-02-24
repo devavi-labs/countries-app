@@ -1,6 +1,12 @@
 import { useStyles } from "../styles/flag";
 
+/**
+ * @interface FlagProps The prop types for Flag component
+ */
 interface FlagProps {
+  /**
+   * The url of the flag of a country
+   */
   url: string;
 }
 

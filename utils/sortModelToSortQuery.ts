@@ -1,7 +1,14 @@
 import { SortModel } from "@material-ui/data-grid";
 import { SortingQuery } from "../types/sortingQuery";
 
-const sortModelToSortQuery = (model: SortModel) => {
+/**
+ * Converts a sort model into a sorting query
+ *
+ * @param model {SortModel} The sort model to be converted
+ *
+ * @returns {SortingQuery} Returns the converted sorting query
+ */
+const sortModelToSortQuery = (model: SortModel): SortingQuery => {
   const fields = model?.map((item) => item.field);
   const sorts = model?.map((item) => item.sort);
 

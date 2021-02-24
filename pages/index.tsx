@@ -35,6 +35,12 @@ const Home: NextPage = () => {
   );
 };
 
+/**
+ * Fetches the list of all countries from API
+ * in the server - side
+ * before the page is served to the user
+ * and stores it in the global redux store
+ */
 export const getServerSideProps = wrapper.getServerSideProps(
   async ({ store }) => {
     try {

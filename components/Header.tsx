@@ -4,7 +4,13 @@ import Typography from "@material-ui/core/Typography";
 import React from "react";
 import useStyles from "../styles/header";
 
+/**
+ * @interface HeaderProps The prop types for Header component
+ */
 interface HeaderProps {
+  /**
+   * The title to be shown in the header
+   */
   title?: string;
 }
 

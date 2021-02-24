@@ -10,13 +10,28 @@ export interface CountryJSON {
 }
 
 export interface ICountry {
+  /** The id (alpha-2 code) of this country */
   id: string;
+
+  /** The full name of this country */
   name: string;
+
+  /** The capital of this country */
   capital: string;
+
+  /** The region this country is in*/
   region: string;
+
+  /** The sub-region this country is in*/
   subregion: string;
+
+  /** The population in this country*/
   population: number;
+
+  /** The area of this country*/
   area: number;
+
+  /** The flag this country*/
   flag: string;
 }
 
@@ -50,6 +65,13 @@ export class Country implements ICountry {
     this.flag = flag;
   }
 
+  /**
+   * Converts the JSON object fetched from API to a new Country instance
+   *
+   * @param countryJSON {JSON} The JSON object fetched from API
+   *
+   * @returns {Country} Returns a new Country object
+   */
   static fromJSON({
     alpha2Code,
     name,
@@ -72,6 +94,9 @@ export class Country implements ICountry {
     });
   }
 
+  /**
+   * Converts the country object into a JSON object
+   */
   toJSON(): ICountry {
     return {
       id: this.id,

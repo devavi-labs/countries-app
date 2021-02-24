@@ -2,6 +2,11 @@ import { CellParams, ColDef } from "@material-ui/data-grid";
 import React from "react";
 import Flag from "../components/Flag";
 
+/**
+ * Prepares the columns for the countries table
+ *
+ * @returns {Array<ColDef>} Returns an array of column definitions
+ */
 const getColumns = (): Array<ColDef> => [
   {
     field: "flag",
