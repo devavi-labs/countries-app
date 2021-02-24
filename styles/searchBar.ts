@@ -13,6 +13,7 @@ export const useStyles = makeStyles((theme: Theme) =>
     inputInput: {
       padding: theme.spacing(1, 1, 1, 0),
       paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+      paddingRight: theme.spacing(6),
       width: "100%",
       color: theme.palette.common.white,
 
@@ -46,6 +47,24 @@ export const useStyles = makeStyles((theme: Theme) =>
       alignItems: "center",
       justifyContent: "center",
       color: theme.palette.common.white,
+    },
+    searchButton: {
+      position: "absolute",
+      right: 0,
+      top: 0,
+      height: "100%",
+      width: theme.spacing(6),
+      color: theme.palette.common.white,
+      opacity: 1,
+      pointerEvents: "all",
+      transition: theme.transitions.create(["opacity", "pointer"], {
+        duration: 200,
+        easing: "ease-in",
+      }),
+    },
+    hidden: {
+      opacity: 0,
+      pointerEvents: "none",
     },
     option: {
       "& > span": {

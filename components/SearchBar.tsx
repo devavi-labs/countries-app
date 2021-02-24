@@ -1,4 +1,6 @@
+import { IconButton } from "@material-ui/core";
 import InputBase from "@material-ui/core/InputBase";
+import { ArrowForward, ArrowRight } from "@material-ui/icons";
 import SearchIcon from "@material-ui/icons/Search";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { useRouter } from "next/router";
@@ -114,6 +116,16 @@ const SearchBar: React.FC = () => {
         onChange={handleAutoComplete}
         noOptionsText="No countries"
       />
+      <IconButton
+        className={
+          input.length > 0
+            ? classes.searchButton
+            : [classes.searchButton, classes.hidden].join(" ")
+        }
+        type="submit"
+      >
+        <ArrowForward />
+      </IconButton>
     </form>
   );
 };
