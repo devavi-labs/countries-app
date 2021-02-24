@@ -14,6 +14,7 @@ export const useStyles = makeStyles((theme: Theme) =>
       padding: theme.spacing(1, 1, 1, 0),
       paddingLeft: `calc(1em + ${theme.spacing(4)})`,
       width: "100%",
+      color: theme.palette.common.white,
 
       [theme.breakpoints.up("sm")]: {
         width: "40ch",
@@ -41,6 +42,7 @@ export const useStyles = makeStyles((theme: Theme) =>
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
+      color: theme.palette.common.white,
     },
     option: {
       "& > span": {
