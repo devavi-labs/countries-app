@@ -2,6 +2,10 @@
 
 A Next.js Web Application built with the [REST Countries](https://restcountries.eu)'s REST API
 
+## App
+
+Go to the _[app](https://countries-devavi.vercel.app/)_
+
 ## Features
 
 ### Table View
