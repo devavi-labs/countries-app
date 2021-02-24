@@ -88,7 +88,6 @@ const SearchBar: React.FC = () => {
           input: classes.inputInput,
           paper: classes.popper,
         }}
-        autoHighlight
         getOptionLabel={(option) => option.name}
         renderOption={(option) => (
           <React.Fragment>
