@@ -1,0 +1,290 @@
+DOCUMENTATION
+
+
+global/countries/actions
+
+Functions
+
+countriesError
+
+▸ countriesError(error: string): CountriesErrorAction
+
+The action dispatched when the countries are failed to be fetched from API
+
+Parameters:
+
+  Name    Type       Description
+  ------- ---------- -------------------------------------------
+  error   string   The error occured while fetching from API
+
+RETURNS: CountriesErrorAction
+
+Returns the CountriesErrorAction
+
+Defined in: global/countries/actions.ts:32
+
+------------------------------------------------------------------------
+
+countriesLoaded
+
+▸ countriesLoaded(countries: Country[]): CountriesLoadedAction
+
+The action dispatched when the countries are fetched from API
+
+Parameters:
+
+  Name        Type          Description
+  ----------- ------------- ----------------------------------------
+  countries   Country[]   The list of countries fetched from API
+
+RETURNS: CountriesLoadedAction
+
+Returns the CountriesLoadedAction
+
+Defined in: global/countries/actions.ts:16
+
+
+global/countries/reducers
+
+Functions
+
+countriesReducer
+
+▸ countriesReducer(state?: CountriesState, action: CountriesActionType): CountriesState
+
+Parameters:
+
+  Name     Type                    Description
+  -------- ----------------------- -------------------------------------------------
+  state    CountriesState        The initial state provided to countries reducer
+  action   CountriesActionType   The actions this reducer will react to
+
+RETURNS: CountriesState
+
+Returns the countries state
+
+Defined in: global/countries/reducers.ts:23
+
+
+hooks/useCountriesTable
+
+Functions
+
+default
+
+▸ default(query: RouteQuery): CountriesTableValues
+
+A custom React hook for building rows and columns for the Countries Table
+
+Parameters:
+
+  Name    Type           Description
+  ------- -------------- -----------------------------------------------------
+  query   RouteQuery   The route query with the URL for filtering the rows
+
+RETURNS: CountriesTableValues
+
+The values to be used in the Countries table
+
+Defined in: hooks/useCountriesTable.ts:40
+
+
+utils/deserializeState
+
+Functions
+
+default
+
+▸ default(state: SerializedRootState): RootState
+
+Deserializes a serialized redux state for client-side
+
+Parameters:
+
+  Name    Type                    Description
+  ------- ----------------------- ----------------------------
+  state   SerializedRootState   The serialized redux state
+
+RETURNS: RootState
+
+Returns a deserialized redux state
+
+Defined in: utils/deserializeState.ts:10
+
+
+utils/fetchCountries
+
+Functions
+
+default
+
+▸ default(): Promise<Country[]>
+
+Fetches the countries list from API endpoint.
+
+RETURNS: Promise<Country[]>
+
+Returns an array of Country object in a promise
+
+Defined in: utils/fetchCountries.ts:10
+
+
+utils/getColumns
+
+Functions
+
+default
+
+▸ default(): ColDef[]
+
+Prepares the columns for the countries table
+
+RETURNS: ColDef[]
+
+Returns an array of column definitions
+
+Defined in: utils/getColumns.tsx:10
+
+
+utils/getRows
+
+Functions
+
+default
+
+▸ default(countries: Country[], query: SearchQuery): ICountry[]
+
+Prepares, and filters if search query provided, the rows for the countries table
+
+Parameters:
+
+  Name        Type            Description
+  ----------- --------------- --------------------------------
+  countries   Country[]     The list of countries
+  query       SearchQuery   The search query for filtering
+
+RETURNS: ICountry[]
+
+Returns the list of countries as rows
+
+Defined in: utils/getRows.ts:12
+
+
+utils/mergeSearchQuery
+
+Functions
+
+default
+
+▸ default(input: string, query: ParsedUrlQuery): string
+
+Merges the search input with the existing url query
+
+Parameters:
+
+  Name    Type               Description
+  ------- ------------------ ----------------------------------------------------------
+  input   string           the input value to be merged with the existing url query
+  query   ParsedUrlQuery   the existing url query
+
+RETURNS: string
+
+Returns the merged query as string
+
+Defined in: utils/mergeSearchQuery.ts:11
+
+
+utils/mergeSortingQuery
+
+Functions
+
+default
+
+▸ default(sortingQuery: SortingQuery, query: ParsedUrlQuery): string
+
+Merges the sorting query with the existing url query
+
+Parameters:
+
+  ----------------------------------------------------------------------------------------------
+  Name           Type               Description
+  -------------- ------------------ ------------------------------------------------------------
+  sortingQuery   SortingQuery     the sorting query to be merged with the existing url query
+
+  query          ParsedUrlQuery   the existing url query
+  ----------------------------------------------------------------------------------------------
+
+RETURNS: string
+
+Returns the merged query as string
+
+Defined in: utils/mergeSortingQuery.ts:12
+
+
+utils/serializeState
+
+Functions
+
+default
+
+▸ default(state: RootState: SerializedRootState)
+
+Serializes the redux state for server-side
+
+Parameters:
+
+  Name    Type          Description
+  ------- ------------- -------------------------------
+  state   RootState   The un-serialized redux state
+
+RETURNS: SerializedRootState
+
+Returns a serialized redux state
+
+Defined in: utils/serializeState.ts:9
+
+
+utils/sortModelToSortQuery
+
+Functions
+
+default
+
+▸ default(model: SortModel): SortingQuery
+
+Converts a sort model into a sorting query
+
+Parameters:
+
+  Name    Type        Description
+  ------- ----------- --------------------------------
+  model   SortModel   The sort model to be converted
+
+RETURNS: SortingQuery
+
+Returns the converted sorting query
+
+Defined in: utils/sortModelToSortQuery.ts:11
+
+
+utils/sortQueryToSortModel
+
+Functions
+
+default
+
+▸ default(query: SortingQuery): SortModel
+
+Converts a sorting query into a sort model
+
+Parameters:
+
+  Name    Type             Description
+  ------- ---------------- -----------------------------------
+  query   SortingQuery   The sorting query to be converted
+
+RETURNS: SortModel
+
+Returns the converted sort model
+
+Defined in: utils/sortQueryToSortModel.ts:11
