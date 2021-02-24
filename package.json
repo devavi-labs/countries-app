@@ -13,7 +13,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "docs": "rimraf temp-docs && typedoc --plugin typedoc-plugin-markdown --theme markdown --out temp-docs && concat-md --toc --decrease-title-levels --dir-name-as-title temp-docs > DOCS.md && rimraf temp-docs"
+    "docs": "rimraf temp-docs && typedoc --plugin typedoc-plugin-markdown --theme markdown --out temp-docs && concat-md --toc --decrease-title-levels --dir-name-as-title temp-docs > DOCUMENTATION.md && rimraf temp-docs",
+    "docs-txt": "pandoc -f markdown -t plain --wrap=none DOCUMENTATION.md -o DOCUMENTATION.txt"
   },
   "dependencies": {
     "@emotion/react": "^11.1.5",
@@ -34,11 +35,12 @@
     "@types/node": "^14.14.31",
     "@types/react": "^17.0.2",
     "@types/react-redux": "^7.1.16",
-    "typedoc": "^0.20.28",
-    "typedoc-plugin-markdown": "^3.5.0",
     "concat-md": "^0.3.5",
+    "pandoc": "^0.2.0",
     "rimraf": "^3.0.2",
     "showdown": "^1.9.1",
+    "typedoc": "^0.20.28",
+    "typedoc-plugin-markdown": "^3.5.0",
     "typescript": "^4.1.5"
   }
 }
