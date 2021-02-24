@@ -20,6 +20,9 @@ export const useStyles = makeStyles((theme: Theme) =>
         width: "40ch",
       },
     },
+    popper: {
+      boxShadow: theme.shadows[24],
+    },
     search: {
       position: "relative",
       borderRadius: theme.shape.borderRadius,

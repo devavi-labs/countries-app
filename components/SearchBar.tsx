@@ -59,6 +59,7 @@ const SearchBar: React.FC = () => {
           option: classes.option,
           root: classes.inputRoot,
           input: classes.inputInput,
+          paper: classes.popper,
         }}
         autoHighlight
         getOptionLabel={(option) => option.name}
