@@ -15,12 +15,13 @@ const SearchBar: React.FC = () => {
   const classes = useStyles();
 
   const router = useRouter();
+  const { query } = router;
 
   const { countries } = useSelector<RootState, CountriesState>(
     (state) => state.countries
   );
 
-  const [input, setInput] = React.useState("");
+  const [input, setInput] = React.useState((query.q as string) ?? "");
 
   const handleAutoComplete = (
     _: React.ChangeEvent<{}>,
@@ -38,8 +39,6 @@ const SearchBar: React.FC = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const { query } = router;
-
     const queryString = mergeSearchQuery(input, query);
 
     const url = queryString ? `/?${queryString}` : "/";
@@ -55,6 +54,7 @@ const SearchBar: React.FC = () => {
       <Autocomplete
         id="country-select"
         options={countries}
+        inputValue={input}
         classes={{
           option: classes.option,
           root: classes.inputRoot,
